@@ -1,0 +1,32 @@
+<h2>Author</h2>
+<h4>{{user.firstName}} Stories</h4>
+<p class="lead">Here are some of {{user.firstName}}'s stories</p>
+
+<div class="row">
+   {{#each story}}
+      <div class="col s12 m4">
+         <div class="card">
+            <div class="card-image">
+               {{{editIcon user ../user _id }}}
+            </div>
+            <div class="card-content center-align">
+               <h5>{{title}}</h5>
+               {{!-- {{helper is used to shorten the words displayed on the card and also strip the paragraph tag}} --}}
+               <p>{{stripTags (truncate body 30)}}</p>
+               <br>
+               <div class="chip">
+                  <img src="{{user.image}}" alt="">
+                  <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+               </div>
+            </div>
+            <div class="card-action center-align">
+               <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+            </div>
+         </div>
+         
+      </div>
+   {{else}}
+      <p class="lead">No stories to display</p>
+   {{/each}}
+</div>
+
